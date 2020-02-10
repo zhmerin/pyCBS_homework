@@ -5,45 +5,44 @@ class Cars:
 		self.color = color
 		self.stock = stock
 
-	def print_info(self):
-		print("Car:", self.model + "\ncolor:", self.color, "\ncosts:", self.price, "\nНа стоке:", self.stock)
-
-
-tesla = Cars("TESLA", 30000, "RED", 4)
-nissan = Cars("NISSAN", 10000, "BLUE/WHITE", 3)
-audi = Cars("AUDI", 20000, "BLACK", 2)
-myCars = [tesla, nissan, audi]
+	def __str__(self):
+		stri = self.model + ' ' + self.price
+		return stri
 
 
 class Salon:
-	def buy(self):
-		if self.stock == 0:
-			return "No more cars on stock"
-		else:
-			self.stock -= 1
-		return self.print_info()
+	def __init__(self, *args):
+		self.cars = args
 
-for i in myCars:
-	i.print_info()
+	def __str__(self):
+		counter = 1
+		strcar = ""
+		print(f"Сейчас на стоке находятся такие машины:")
+		for car in self.cars:
+			strcar += f"{counter}. Модель: {car.model}\n цвет: {car.color}\n цена: {car.price}\n кол-во: {car.stock}" \
+				f"\n------------\n"
+			counter += 1
+		return strcar
+
+	def sale(self, model):
+		for car in self.cars:
+			if model.lower() == car.model.lower() and car.stock > 0:
+				print("SOLD! " + car.model + '\n')
+				car.stock -= 1
+			elif model.lower() == car.model.lower() and car.stock == 0:
+				print("Машины нет в наличии! Выбери другую")
+				continue
 
 
+car1 = Cars("TESLA", 50000, "Red", 3)
+car2 = Cars("BMW", 20000, "Grey", 2)
+car3 = Cars("Lada", 530000, "Gold", 1)
+myCars = [car1, car2, car3]
 
-
-def selectCar():
+def buycar():
 	while True:
-		x = input("Choose a car: ")
-		if x == "tesla".lower():
-			res = myCars[0]
-			return res
-		elif x == "audi".lower():
-			res = myCars[1]
-			return res
-		elif x == "nissan".lower():
-			res = myCars[2]
-			return res
-		else:
-			print("Try again")
+		print(Salon(car1, car2, car3))
+		x = input("Какую машину хочешь купить?: ")
+		Salon(car1, car2, car3).sale(x)
 
-
-
-Salon.buy(selectCar())
+buycar()
