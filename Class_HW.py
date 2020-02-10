@@ -32,6 +32,8 @@ class Salon:
 			elif model.lower() == car.model.lower() and car.stock == 0:
 				print("Машины нет в наличии! Выбери другую")
 				continue
+			else:
+				print("Нет такой машины!")
 
 
 car1 = Cars("TESLA", 50000, "Red", 3)
