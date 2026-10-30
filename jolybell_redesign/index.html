@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>*** JolyBell.com *** Welcome!!! ***</title>
+<meta name="description" content="Unofficial parody redesign of jolybell.com in the style of a 2000s web page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --hot:#ff00cc;--lime:#39ff14;--yel:#ffff00;--cyan:#00ffff;--saff:#ff9933;--grn:#138808;
+  --navy:#000080;--red:#ff0000;--purp:#9900ff;--org:#ff6600;--link:#0000ee;--visited:#551a8b;
+  --win:#c0c0c0;
+  --comic:"Comic Sans MS","Comic Neue","Chalkboard SE",cursive;
+  --impact:Impact,"Anton","Haettenschweiler","Arial Black",sans-serif;
+  --times:"Times New Roman",Times,serif;
+  --tahoma:Tahoma,Verdana,"DejaVu Sans",sans-serif;
+  --burst:polygon(50% 0%,59.3% 15.2%,75% 6.7%,75.5% 24.5%,93.3% 25%,84.8% 40.7%,100% 50%,84.8% 59.3%,93.3% 75%,75.5% 75.5%,75% 93.3%,59.3% 84.8%,50% 100%,40.7% 84.8%,25% 93.3%,24.5% 75.5%,6.7% 75%,15.2% 59.3%,0% 50%,15.2% 40.7%,6.7% 25%,24.5% 24.5%,25% 6.7%,40.7% 15.2%);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:var(--comic);
+  color:#000;
+  background-color:#2b0057;
+  background-image:
+    radial-gradient(circle at 20% 30%,#fff 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 70% 80%,var(--yel) 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 50% 50%,var(--hot) 0 2px,transparent 3px),
+    repeating-conic-gradient(#3a007a 0 25%,#22004a 0 50%);
+  background-size:60px 60px,90px 90px,120px 120px,40px 40px;
+  animation:bgmove 30s linear infinite;
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><polygon points='12,1 15,9 23,9 17,14 19,23 12,18 5,23 7,14 1,9 9,9' fill='%23ffff00' stroke='%23ff00cc' stroke-width='1.5'/></svg>") 12 12,auto;
+  padding-bottom:30px;
+}
+a{color:var(--link)}
+a:visited{color:var(--visited)}
+a,button,select,input,textarea{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><polygon points='12,1 15,9 23,9 17,14 19,23 12,18 5,23 7,14 1,9 9,9' fill='%2339ff14' stroke='%23ff0000' stroke-width='1.5'/></svg>") 12 12,pointer}
+
+/* ---------- animations ---------- */
+@keyframes bgmove{to{background-position:600px 300px,-450px 450px,240px -240px,0 0}}
+@keyframes blink{50%{visibility:hidden}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin3d{to{transform:rotateY(360deg)}}
+@keyframes throb{from{transform:scale(.92)}to{transform:scale(1.08)}}
+@keyframes pop{from{transform:scale(.85) rotate(-12deg);background:var(--yel);color:var(--red)}to{transform:scale(1.15) rotate(12deg);background:var(--red);color:var(--yel)}}
+@keyframes rb{to{background-position:200% 0}}
+@keyframes shake{0%,100%{transform:translate(0,0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,-2px)}}
+@keyframes wobble{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(4deg) scale(1.05)}}
+@keyframes flicker{from{text-shadow:0 0 4px #f00,0 -3px 6px #f60,0 -6px 10px #f00}to{text-shadow:0 0 6px #ff0,0 -5px 10px #f90,0 -10px 16px #f00}}
+@keyframes stripes{to{background-position:34px 0}}
+@keyframes globe{to{transform:translateX(-50%)}}
+@keyframes fall{to{transform:translateY(40px) rotate(180deg) scale(.3);opacity:0}}
+@keyframes glow{from{box-shadow:0 0 0 4px var(--yel),0 0 0 8px var(--red),0 0 24px 8px var(--cyan)}to{box-shadow:0 0 0 4px var(--red),0 0 0 8px var(--yel),0 0 34px 12px var(--hot)}}
+
+.blink{animation:blink 1s steps(1) infinite}
+.spin{display:inline-block;animation:spin 2s linear infinite}
+.spin3d{display:inline-block;animation:spin3d 2s linear infinite}
+.rainbow{
+  background:linear-gradient(90deg,#f00,#f90,#ff0,#3f3,#0ff,#33f,#f0f,#f00);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:rb 2s linear infinite;
+}
+.fire{color:#ff0;text-shadow:0 0 4px #f00,0 -3px 6px #f60,0 -6px 10px #f00;animation:flicker .3s ease-in-out infinite alternate}
+
+/* ---------- page frame ---------- */
+.page{
+  max-width:1000px;margin:12px auto;
+  background:#ffffcc;
+  border:8px ridge var(--hot);
+  animation:glow 1.5s ease-in-out infinite alternate;
+}
+marquee{display:block}
+.mq{background:var(--red);color:var(--yel);font:bold 16px var(--tahoma);padding:4px 0;border-block:3px double #fff}
+.mq2{background:linear-gradient(90deg,var(--saff),#fff 50%,var(--grn));color:var(--navy);font:bold italic 15px var(--times);padding:3px 0}
+
+/* ---------- header ---------- */
+.top{
+  display:grid;grid-template-columns:230px 1fr 210px;align-items:center;gap:10px;padding:10px;
+  background:repeating-linear-gradient(45deg,#00ffff 0 12px,#99ffff 12px 24px);
+  border-bottom:5px groove var(--purp);
+}
+.logo{display:flex;gap:4px;justify-content:center;animation:wobble 3s ease-in-out infinite;text-decoration:none}
+.logo b{font:400 40px/1 var(--impact);padding:4px 8px;border:4px outset #ddd}
+.logo b:first-child{background:var(--hot);color:var(--yel)}
+.logo b:last-child{background:var(--navy);color:var(--lime);text-decoration:underline wavy var(--yel)}
+.logo-sub{text-align:center;font:bold 11px var(--tahoma);color:var(--red);margin-top:6px}
+h1.wordart{
+  margin:0;text-align:center;letter-spacing:1px;
+  font:400 clamp(30px,5.4vw,52px)/1 var(--impact);
+  background:linear-gradient(180deg,#ff0 0%,#f90 45%,#f00 55%,#900 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:1.5px #000;
+  filter:drop-shadow(3px 3px 0 #00f) drop-shadow(2px 2px 0 #f0f);
+  transform:perspective(300px) rotateX(14deg);
+}
+.subtitle{text-align:center;font:italic bold 16px var(--times);color:var(--purp);margin-top:6px}
+.subtitle u{color:var(--red)}
+.subtitle .rainbow{display:inline-block}
+.tools{display:flex;flex-direction:column;gap:6px;align-items:center;font:bold 12px var(--tahoma)}
+.tools .row{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:center}
+.tools select{font:bold 12px var(--tahoma);background:var(--yel);border:2px inset #999}
+.cart-btn{font:bold 13px var(--tahoma);background:var(--lime);border:3px outset #9f9;padding:3px 8px}
+.cart-btn:active{border-style:inset}
+
+/* ---------- nav ---------- */
+.nav{display:flex;flex-wrap:wrap;gap:12px 5px;padding:18px 16px 8px;background:#000;justify-content:center;border-bottom:4px ridge var(--yel)}
+.nav a{position:relative;font:900 13px "Arial Black",var(--tahoma);text-transform:uppercase;text-decoration:none;padding:6px 10px;border:3px outset #ccc;color:#fff}
+.nav a.has-new{padding-right:24px}
+.nav a:hover{border-style:inset;filter:invert(1);animation:shake .2s linear infinite}
+.new{
+  position:absolute;top:-16px;right:-14px;width:34px;height:34px;
+  display:grid;place-items:center;font:900 9px var(--tahoma);
+  background:var(--yel);color:var(--red);clip-path:var(--burst);
+  animation:pop .5s ease-in-out infinite alternate;pointer-events:none;
+}
+
+/* ---------- layout ---------- */
+.main{display:grid;grid-template-columns:185px minmax(0,1fr) 205px;gap:10px;padding:10px}
+.box{border:4px ridge var(--purp);background:#fff;margin-bottom:10px}
+.box>h3{margin:0;padding:4px 6px;font:bold 13px var(--tahoma);color:#fff;text-transform:uppercase;background:linear-gradient(90deg,var(--navy),#1084d0)}
+.box.pink>h3{background:linear-gradient(90deg,var(--hot),var(--org))}
+.box.green>h3{background:linear-gradient(90deg,var(--grn),var(--lime));color:#000}
+.box.red>h3{background:linear-gradient(90deg,#900,var(--red));color:var(--yel)}
+.box .in{padding:6px;font-size:13px}
+.box.lime{background:#ccffcc}
+.box.cyan{background:#ccffff}
+.box.pinkbg{background:#ffccff}
+
+.cats{list-style:none;margin:0;padding:0}
+.cats li{border-bottom:1px dashed var(--hot)}
+.cats a{display:block;padding:3px 4px;font:bold 15px var(--times)}
+.cats a:hover{background:var(--yel);color:var(--red)}
+.cats .star{display:inline-block;color:var(--hot);animation:spin 2s linear infinite;margin-right:4px;text-decoration:none}
+.cats .nw{font:bold 10px var(--tahoma);color:#fff;background:var(--red);padding:0 3px;margin-left:3px}
+
+.counter{display:inline-flex;background:#000;border:3px inset #888;padding:3px;gap:2px}
+.counter span{font:bold 20px "Courier New",monospace;color:var(--lime);background:#111;padding:0 3px;border:1px solid #333;text-shadow:0 0 6px var(--lime)}
+.box .counter span{font-size:15px;padding:0 2px}
+.center-txt{text-align:center}
+.tiny{font:10px var(--tahoma);color:#555}
+
+.uc{background:repeating-linear-gradient(-45deg,#000 0 12px,#ffcc00 12px 24px);background-size:34px 34px;animation:stripes 1s linear infinite;padding:8px;text-align:center}
+.uc span{display:inline-block;background:#ffcc00;font:400 15px/1.1 var(--impact);padding:5px;border:2px solid #000}
+
+.w98{font:12px var(--tahoma);background:var(--win);border:2px outset #fff;padding:3px 8px;margin:2px 0;width:100%}
+.w98:active{border-style:inset}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;min-height:320px;
+  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:10px;padding:26px 16px;
+  border:6px double var(--red);background:var(--saff);
+}
+.rays{position:absolute;inset:-60%;background:repeating-conic-gradient(#ffdd00 0 10deg,#ff6600 10deg 20deg);animation:spin 20s linear infinite}
+.hero>*:not(.rays){position:relative;z-index:1}
+.hero .burst{position:absolute;z-index:2}
+.burst{
+  width:112px;height:112px;display:grid;place-items:center;text-align:center;
+  font:400 16px/1 var(--impact);clip-path:var(--burst);
+  background:var(--red);color:var(--yel);animation:throb .5s ease-in-out infinite alternate;
+}
+.b1{top:6px;right:6px}
+.b2{bottom:6px;right:6px;background:var(--lime);color:var(--red);font-size:15px}
+.wordart2{
+  margin:0;text-align:center;
+  font:400 clamp(28px,4.2vw,44px)/.95 var(--impact);
+  color:var(--yel);-webkit-text-stroke:2px var(--red);
+  text-shadow:1px 1px 0 #900,2px 2px 0 #900,3px 3px 0 #900,4px 4px 0 #900,5px 5px 0 #600,6px 6px 8px #000;
+  transform:rotate(-4deg) skewX(-8deg);
+}
+.hero-txt{text-align:center;font:bold 17px var(--times);color:var(--navy);background:rgba(255,255,255,.85);border:3px dashed var(--hot);padding:6px;margin:14px auto 12px;max-width:340px}
+.hero-txt i{color:var(--grn)}
+.hero-pic{text-align:center}
+.hero-pic svg{width:min(250px,100%);height:auto;filter:drop-shadow(6px 6px 0 rgba(0,0,0,.45));animation:throb 1.2s ease-in-out infinite alternate}
+
+.btn{
+  display:inline-block;font:900 16px var(--tahoma);text-transform:uppercase;text-decoration:none;
+  color:var(--yel);background:linear-gradient(180deg,#ff4040,#b00000);
+  border:3px outset #ff9090;padding:8px 14px;text-shadow:1px 1px 0 #000;
+  animation:throb .6s ease-in-out infinite alternate;
+}
+a.btn:visited{color:var(--yel)}
+.btn:active{border-style:inset}
+.btn.sm{font-size:12px;padding:5px 8px;animation-duration:.8s}
+.btn.green{background:linear-gradient(180deg,#5f5,#080);border-color:#afa;color:#fff}
+
+/* ---------- sections ---------- */
+.slogan{margin:12px 0;padding:14px 8px;text-align:center;background:#000;border:5px ridge var(--lime)}
+.slogan .w{font:400 clamp(20px,3.4vw,34px)/1.25 var(--impact);letter-spacing:2px}
+.slogan .w span:nth-child(1){color:var(--cyan)}
+.slogan .w span:nth-child(2){color:#000;background:#fff;padding:0 8px}
+.slogan .w span:nth-child(3){color:var(--hot)}
+.slogan .w span:nth-child(4){color:var(--yel)}
+.slogan .w span:nth-child(5){color:var(--lime)}
+.slogan .sub{font:bold 16px var(--comic);margin-top:8px}
+
+.hr{height:8px;margin:14px 0;border:0;background:linear-gradient(90deg,#f00,#f90,#ff0,#3f3,#0ff,#33f,#f0f,#f00);background-size:200% 100%;animation:rb 1.5s linear infinite}
+
+.sec-h{
+  margin:0 0 10px;padding:6px;text-align:center;
+  font:400 clamp(20px,3vw,28px)/1.1 var(--impact);letter-spacing:1px;
+  color:var(--yel);-webkit-text-stroke:1px #000;text-shadow:3px 3px 0 #000;
+  background:linear-gradient(90deg,var(--hot),var(--purp),var(--hot));
+  border:4px outset #f9f;
+}
+
+.ad{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  min-height:60px;margin:12px auto;max-width:468px;padding:6px;text-align:center;text-decoration:none;
+  background:repeating-linear-gradient(90deg,var(--navy) 0 20px,#0000cc 20px 40px);
+  border:3px solid var(--yel);color:#fff;font:bold 14px var(--tahoma);
+}
+a.ad:visited{color:#fff}
+.ad b{color:var(--yel)}
+.ad .click{color:var(--red);background:var(--yel);padding:2px 6px;font:900 13px var(--tahoma)}
+
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px}
+.prod{position:relative;border:4px outset #ddd;padding:10px 8px;text-align:center;perspective:400px}
+.prod:nth-child(5n+1){background:#ff99ff}
+.prod:nth-child(5n+2){background:#99ff99}
+.prod:nth-child(5n+3){background:#99ffff}
+.prod:nth-child(5n+4){background:#ffff66}
+.prod:nth-child(5n+5){background:#ffbb66}
+.prod svg{width:120px;height:120px;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.45))}
+.prod:hover svg{animation:spin3d 1s linear infinite}
+.prod .nm{display:block;font:bold 17px var(--times);margin:4px 0}
+.prod .pr{display:inline-block;font:400 22px var(--impact);color:var(--red);background:var(--yel);padding:0 6px;transform:rotate(-3deg);border:2px dashed var(--red);margin:4px 0 8px}
+.prod .pr small{font:bold 11px var(--tahoma);color:#000}
+.prod .hot{position:absolute;top:6px;left:8px;font:400 18px var(--impact)}
+.prod .new{top:-10px;right:-8px}
+.prod .acts{display:flex;flex-direction:column;gap:6px;align-items:center}
+.prod .more{font:bold 13px var(--times)}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px}
+.tile{position:relative;display:block;text-align:center;padding:8px 4px;border:3px outset #ddd;text-decoration:none;font:900 12px var(--tahoma);text-transform:uppercase;color:#000;overflow-wrap:anywhere}
+.tile:visited{color:#000}
+.tile svg,.tile .emo{display:block;margin:0 auto 4px;width:56px;height:56px}
+.tile .emo{font:400 44px/56px var(--impact)}
+.tile:hover{border-style:inset}
+.tile:hover svg,.tile:hover .emo{animation:spin 1s linear infinite}
+.tile .new{width:30px;height:30px;font-size:8px;top:-8px;right:-6px}
+
+.deliver{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:10px;background:#000;color:#fff;border:5px ridge var(--cyan)}
+.deliver h4{margin:0 0 4px;font:400 22px/1.15 var(--impact);color:var(--lime)}
+.globe{position:relative;width:96px;height:96px;border-radius:50%;overflow:hidden;background:#0055ff;box-shadow:0 0 18px var(--cyan)}
+.land{
+  position:absolute;top:0;bottom:0;left:0;width:200%;animation:globe 4s linear infinite;
+  background:
+    radial-gradient(ellipse 9% 22% at 8% 35%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 5% 26% at 15% 72%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 8% 15% at 27% 28%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 4% 20% at 31% 64%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 7% 12% at 42% 50%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 9% 22% at 58% 35%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 5% 26% at 65% 72%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 8% 15% at 77% 28%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 4% 20% at 81% 64%,#22bb22 97%,transparent 100%),
+    radial-gradient(ellipse 7% 12% at 92% 50%,#22bb22 97%,transparent 100%);
+}
+.globe::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.65),transparent 32%),radial-gradient(circle,transparent 52%,rgba(0,0,0,.6))}
+
+.faq dt{font:bold 15px var(--times);color:var(--red);margin-top:8px}
+.faq dd{margin:2px 0 0 18px;font-size:14px}
+
+.gb{display:grid;gap:6px;font:bold 13px var(--tahoma)}
+.gb label{display:grid;gap:2px}
+.gb input,.gb textarea,.gb select{font:13px var(--comic);border:2px inset #999;padding:3px;background:#ffffee;width:100%}
+
+.contact a{word-break:break-all}
+.contact p{margin:4px 0}
+.pay{display:flex;flex-wrap:wrap;gap:4px}
+.pay a,.pay span{flex:1 1 80px;text-align:center;font:900 11px var(--tahoma);padding:5px 2px;border:2px outset #ddd;text-decoration:none}
+.pay .p1{background:#fff;color:#000}
+.pay .p2{background:#f7931a;color:#fff}
+.pay .p3{background:#8dc63f;color:#000}
+.pay a.p4,.pay a.p4:visited{background:#229ed9;color:#fff}
+
+.clock{font:bold 15px "Courier New",monospace;color:var(--red);background:#000;border:3px inset #888;padding:4px;text-align:center;text-shadow:0 0 5px var(--red)}
+
+.poll label{display:block;font-size:13px;margin:2px 0}
+
+/* ---------- footer ---------- */
+.foot{padding:12px;text-align:center;background:var(--navy);color:#fff;font:13px var(--tahoma);border-top:6px ridge var(--hot)}
+.foot a{color:var(--yel)}
+.foot a:visited{color:var(--saff)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.b88{width:88px;height:31px;display:grid;place-items:center;font:900 9px/1.05 var(--tahoma);text-transform:uppercase;border:2px outset #ddd;text-align:center;padding:1px}
+.b88:nth-child(1){background:#fff;color:#000}
+.b88:nth-child(2){background:linear-gradient(#36c,#039);color:#ff0}
+.b88:nth-child(3){background:#000;color:var(--lime)}
+.b88:nth-child(4){background:linear-gradient(90deg,var(--saff),#fff,var(--grn));color:var(--navy)}
+.b88:nth-child(5){background:var(--red);color:#fff}
+.b88:nth-child(6){background:#229ed9;color:#fff}
+.disclaimer{margin-top:10px;font:11px var(--tahoma);color:#ccf}
+
+/* ---------- fake IE status bar ---------- */
+.status{position:fixed;left:0;right:0;bottom:0;height:26px;display:flex;align-items:center;gap:4px;padding:0 4px;background:var(--win);border-top:2px outset #fff;font:12px var(--tahoma);z-index:500}
+.status .cell{border:1px inset #fff;padding:1px 6px;white-space:nowrap}
+.status .grow{flex:1;min-width:0;overflow:hidden}
+.status button{font:12px var(--tahoma);background:var(--win);border:2px outset #fff;padding:1px 6px;white-space:nowrap}
+.status button:active{border-style:inset}
+
+/* ---------- win98 dialog ---------- */
+.dlg-back{position:fixed;inset:0;background:rgba(0,0,0,.3);display:none;place-items:center;z-index:1000;padding:16px}
+.dlg-back.open{display:grid}
+.dlg{width:min(400px,100%);background:var(--win);border:2px outset #fff;box-shadow:3px 3px 0 #000;font:13px var(--tahoma)}
+.dlg .tb{display:flex;justify-content:space-between;align-items:center;padding:3px 4px;background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:bold}
+.dlg .tb button{width:20px;height:18px;padding:0;font:bold 12px/1 var(--tahoma);background:var(--win);border:2px outset #fff}
+.dlg .body{display:flex;gap:12px;align-items:flex-start;padding:16px 14px}
+.warn{flex:none;width:38px;height:34px;display:grid;place-items:end center;padding-bottom:2px;font:900 20px var(--tahoma);background:var(--yel);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.dlg .btns{display:flex;gap:8px;justify-content:center;padding:0 0 14px}
+.dlg .btns button{min-width:80px;padding:4px 8px;font:13px var(--tahoma);background:var(--win);border:2px outset #fff}
+.dlg .btns button:focus{outline:1px dotted #000;outline-offset:-5px}
+.dlg .btns button:active{border-style:inset}
+
+.sparkle{position:absolute;pointer-events:none;z-index:999;font:bold 18px var(--tahoma);animation:fall .9s linear forwards}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .top{grid-template-columns:1fr;justify-items:center}
+  .main{grid-template-columns:1fr}
+  .center{order:-1}
+  .hero{grid-template-columns:1fr}
+  .b1{width:96px;height:96px;font-size:14px;top:auto;right:auto;bottom:6px;left:6px}
+  .b2{width:96px;height:96px;font-size:13px}
+}
+@media (max-width:480px){
+  .page{margin:0;border-width:5px}
+  .status .hide-sm{display:none}
+  .deliver{grid-template-columns:1fr;justify-items:center;text-align:center}
+}
+
+/* ---------- stop blinking (accessibility) ---------- */
+html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- clip-art library: every product picture on the page is drawn from these -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tee" viewBox="0 0 100 100"><path d="M34 8 Q50 20 66 8 L86 16 L98 38 L82 46 L76 38 L76 94 L24 94 L24 38 L18 46 L2 38 L14 16 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sweat" viewBox="0 0 100 100"><path d="M34 8 Q50 20 66 8 L84 16 L97 84 L85 88 L76 44 L76 94 L24 94 L24 44 L15 88 L3 84 L16 16 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 87 H76" stroke="#000" stroke-width="2" fill="none"/></symbol>
+    <symbol id="i-hood" viewBox="0 0 100 100"><path d="M36 14 Q36 2 50 2 Q64 2 64 14 L84 20 L97 84 L85 88 L76 46 L76 94 L24 94 L24 46 L15 88 L3 84 L16 20 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M40 15 Q50 30 60 15" fill="none" stroke="#000" stroke-width="2"/><path d="M36 70 H64 L60 84 H40 Z" fill="none" stroke="#000" stroke-width="2"/></symbol>
+    <symbol id="i-pants" viewBox="0 0 100 100"><path d="M26 6 H74 L82 96 H58 L50 40 L42 96 H18 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M26 14 H74" stroke="#000" stroke-width="2"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 100 100"><path d="M34 36 Q34 8 50 8 Q66 8 66 36" fill="none" stroke="#000" stroke-width="5"/><path d="M14 34 H86 L92 96 H8 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-polo" viewBox="0 0 100 100"><use href="#i-tee"/><path d="M38 9 L50 26 L62 9" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="50" cy="33" r="2.2"/><circle cx="50" cy="41" r="2.2"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 100 100"><use href="#i-sweat"/><path d="M38 9 L50 22 L62 9 M50 22 V94" fill="none" stroke="#000" stroke-width="2.5"/><circle cx="54" cy="34" r="2"/><circle cx="54" cy="50" r="2"/><circle cx="54" cy="66" r="2"/></symbol>
+    <symbol id="i-pj" viewBox="0 0 100 100"><path d="M62 8 A42 42 0 1 0 94 70 A34 34 0 1 1 62 8 Z" fill="currentColor" stroke="#000" stroke-width="2.5"/><text x="60" y="44" font-family="Impact,Anton,sans-serif" font-size="20" fill="#000">Zz</text></symbol>
+    <symbol id="i-cap" viewBox="0 0 100 100"><path d="M10 68 Q10 24 48 24 Q84 24 84 68 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M60 68 H98 Q98 80 84 80 H50 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><circle cx="48" cy="24" r="4"/></symbol>
+    <symbol id="i-under" viewBox="0 0 100 100"><path d="M8 24 H92 L90 46 Q70 54 60 82 H40 Q30 54 10 46 Z" fill="currentColor" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/><path d="M8 33 H92" stroke="#000" stroke-width="2"/></symbol>
+    <symbol id="i-mug" viewBox="0 0 100 100"><path d="M70 40 Q92 40 92 57 Q92 74 70 74" fill="none" stroke="#000" stroke-width="7"/><rect x="14" y="26" width="56" height="66" rx="6" fill="currentColor" stroke="#000" stroke-width="2.5"/><path d="M30 20 Q24 14 30 6 M44 20 Q38 14 44 6 M58 20 Q52 14 58 6" fill="none" stroke="#000" stroke-width="2.5"/></symbol>
+    <symbol id="i-beanie" viewBox="0 0 100 100"><path d="M16 72 Q16 20 50 20 Q84 20 84 72 Z" fill="currentColor" stroke="#000" stroke-width="2.5"/><rect x="12" y="66" width="76" height="20" rx="4" fill="currentColor" stroke="#000" stroke-width="2.5"/><circle cx="50" cy="14" r="9" fill="currentColor" stroke="#000" stroke-width="2.5"/></symbol>
+  </defs>
+</svg>
+
+<div class="page">
+
+  <marquee class="mq" scrollamount="7">
+    ★★★ NAMASTE &amp; WELCOME TO JOLYBELL.COM ★★★ &nbsp; MEGA DIWALI DHAMAKA SALE!!! &nbsp; ★ T-SHIRTS STARTING $25.94/- ONLY ★ &nbsp; WE DELIVER WORLDWIDE — TO ANY POINT ON THE PLANET!!! &nbsp; ★ KINDLY DO THE NEEDFUL AND PLACE YOUR ORDER TODAY ITSELF ★ &nbsp; HURRY UP!!! &nbsp; ★★★
+  </marquee>
+
+  <header class="top">
+    <div>
+      <a class="logo" href="#" aria-label="JolyBell home"><b>JOLY.</b><b>BELL</b></a>
+      <div class="logo-sub"><span class="blink">◆</span> Since the year of our foundation <span class="blink">◆</span></div>
+    </div>
+    <div>
+      <h1 class="wordart">★ JolyBell™ Fashion World ★</h1>
+      <div class="subtitle">No.1 Online Garments Shoppe on <u>Planet Earth</u>!!! &nbsp;<span class="rainbow">Best Quality — Best Price!!!</span></div>
+    </div>
+    <div class="tools">
+      <div class="row">
+        <select aria-label="Language" data-soon><option>ENG</option><option>HINGLISH</option></select>
+        <select aria-label="Currency" data-soon><option>USD</option><option>RUPAYA</option></select>
+      </div>
+      <button class="cart-btn" type="button" id="cartBtn">🛒 <span id="cartTotal">0 USD</span></button>
+      <div class="tiny">You are visitor No.</div>
+      <div class="counter" id="counter" aria-label="Visitor counter"></div>
+    </div>
+  </header>
+
+  <nav class="nav" id="nav"></nav>
+
+  <marquee class="mq2" scrollamount="4" direction="right">
+    ✿ Sasta, Sundar aur Tikau ✿ &nbsp; Payment accepted: WayForPay • Privat24 • Crypto • Telegram ✿ &nbsp; This website is best viewed in Internet Explorer 6.0 at 800×600 resolution ✿
+  </marquee>
+
+  <div class="main">
+
+    <!-- ===== LEFT ===== -->
+    <aside class="left">
+      <div class="box pink">
+        <h3><span class="spin">✪</span> Categories</h3>
+        <ul class="cats" id="cats"></ul>
+      </div>
+
+      <div class="box lime">
+        <h3>Hit Counter</h3>
+        <div class="in center-txt">
+          <div class="counter" id="counter2" aria-hidden="true"></div>
+          <div class="tiny">Free Counter — since 1999</div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="uc"><span>🚧 SITE UNDER<br>CONSTRUCTION 🚧</span></div>
+        <div class="in center-txt tiny">Pardon our dust!!! New pages coming soon...</div>
+      </div>
+
+      <div class="box cyan">
+        <h3>Bookmark Us!!!</h3>
+        <div class="in">
+          <button class="w98" type="button" data-msg="fav">⭐ Add to Favourites</button>
+          <button class="w98" type="button" data-msg="home">🏠 Make Us Homepage</button>
+        </div>
+      </div>
+
+      <div class="box pinkbg">
+        <h3>Fashion WebRing</h3>
+        <div class="in center-txt">
+          <a href="#" data-msg="ring">« Prev</a> | <a href="#" data-msg="ring">Random</a> | <a href="#" data-msg="ring">Next »</a>
+          <div class="tiny">Member No. 0420 of Garments WebRing</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== CENTER ===== -->
+    <main class="center">
+
+      <section class="hero" aria-label="Hoodie promotion">
+        <div class="rays" aria-hidden="true"></div>
+        <div class="burst b1">NEW<br>ARRIVAL<br>!!!</div>
+        <div class="burst b2">T-SHIRTS<br>FROM<br>$25.94/-</div>
+        <div>
+          <h2 class="wordart2">MEGA DIWALI<br>DHAMAKA<br>SALE!!!</h2>
+          <div class="hero-txt">
+            Hoodies • Sweatshirts • T-shirts • Caps<br>
+            <i>"Sasta, Sundar aur Tikau!!!"</i>
+          </div>
+          <div class="center-txt"><a class="btn" href="https://jolybell.com/en/category/hoodies" target="_blank" rel="noopener">☞ Shop Now!!! &gt;&gt;</a></div>
+        </div>
+        <div class="hero-pic">
+          <svg viewBox="0 0 100 100" role="img" aria-label="White hoodie with the words paita, jemper, sweater crossed out">
+            <use href="#i-hood" style="color:#fff"/>
+            <g font-family="Impact,Anton,sans-serif" font-size="8" text-anchor="middle" fill="#000">
+              <text x="50" y="38">PAITA</text>
+              <text x="50" y="48">JEMPER</text>
+              <text x="50" y="58">SWEATER</text>
+            </g>
+            <g stroke="#e00" stroke-width="1.6">
+              <line x1="38" y1="35" x2="62" y2="35"/>
+              <line x1="36" y1="45" x2="64" y2="45"/>
+              <line x1="34" y1="55" x2="66" y2="55"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <div class="slogan">
+        <div class="w"><span>THERE'S ONLY</span> <span class="blink">WHITE</span> <span>AND BLACK,</span> <span>THE REST</span> <span>ARE SHADES.</span></div>
+        <div class="sub rainbow">...but our webmaster found ALL the shades!!! ☺☺☺</div>
+      </div>
+
+      <a class="ad" href="https://t.me/JolyBellCustomerBot" target="_blank" rel="noopener">
+        <span class="spin3d" style="font-size:30px">🌍</span>
+        <span><b class="blink">!!! ATTENTION !!!</b><br>We deliver WORLDWIDE — to ANY point on the PLANET!!!</span>
+        <span class="click">CLICK HERE</span>
+      </a>
+
+      <hr class="hr">
+
+      <h2 class="sec-h"><span class="spin">★</span> <span class="fire">HOT</span> SELLING T-SHIRTS <span class="spin">★</span></h2>
+      <div class="prods" id="prods"></div>
+      <p class="center-txt"><a class="btn green" href="https://jolybell.com/en/category/t-shirts" target="_blank" rel="noopener">View All T-shirts &gt;&gt;&gt;</a></p>
+
+      <hr class="hr">
+
+      <h2 class="sec-h"><span class="spin">✪</span> SHOP BY CATEGORY <span class="spin">✪</span></h2>
+      <div class="tiles" id="tiles"></div>
+
+      <hr class="hr">
+
+      <div class="deliver">
+        <div class="globe" aria-hidden="true"><div class="land"></div></div>
+        <div>
+          <h4>WE DELIVER WORLDWIDE!!!</h4>
+          <div>To <b class="blink" style="color:var(--yel)">ANY POINT</b> on the planet. Your city, your village, your Antarctica research station — no problem ji!!!</div>
+        </div>
+      </div>
+
+      <hr class="hr">
+
+      <div class="box green">
+        <h3>❓ Frequently Asked Question (FAQ)</h3>
+        <div class="in">
+          <dl class="faq">
+            <dt>Q. Which colours are available???</dt>
+            <dd>A. There's only WHITE and BLACK, the rest are shades. (This website is an exception.)</dd>
+            <dt>Q. Do you deliver to my place???</dt>
+            <dd>A. YES!!! We deliver worldwide — to any point on the planet.</dd>
+            <dt>Q. How can I pay???</dt>
+            <dd>A. WayForPay, Privat24, Crypto and Telegram. Kindly choose as per your convenience.</dd>
+            <dt>Q. Whom to contact for any query???</dt>
+            <dd>A. Kindly write to <a href="mailto:support@jolybell.com">support@jolybell.com</a> or message our <a href="https://t.me/JolyBellCustomerBot" target="_blank" rel="noopener">Telegram bot</a>.</dd>
+          </dl>
+          <p class="center-txt"><a href="https://jolybell.com/en/faq" target="_blank" rel="noopener">☞ Click here for MORE FAQ &gt;&gt;</a></p>
+        </div>
+      </div>
+
+      <div class="box pink">
+        <h3>✍ Sign My Guestbook!!!</h3>
+        <div class="in">
+          <form class="gb" id="gb">
+            <label>Your Good Name: <input name="name" required maxlength="40"></label>
+            <label>E-mail ID: <input name="email" type="email" maxlength="60"></label>
+            <label>How did you find us?
+              <select name="src"><option>Yahoo!</option><option>Rediff</option><option>AltaVista</option><option>ICQ</option><option>Friend told me</option></select>
+            </label>
+            <label>Comments: <textarea name="msg" rows="3" maxlength="300"></textarea></label>
+            <div class="center-txt"><button class="btn sm" type="submit">Submit!!!</button> <button class="w98" style="width:auto" type="reset">Reset</button></div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== RIGHT ===== -->
+    <aside class="right">
+      <div class="box red">
+        <h3><span class="blink">●</span> Today's Special</h3>
+        <div class="in center-txt" id="special"></div>
+      </div>
+
+      <div class="box cyan contact">
+        <h3>☎ Contact Us 24×7</h3>
+        <div class="in">
+          <p><span class="spin3d">✉</span> <b>E-MAIL:</b><br><a href="mailto:support@jolybell.com">support@jolybell.com</a></p>
+          <p><span class="spin3d">✈</span> <b>TELEGRAM:</b><br><a href="https://t.me/JolyBellCustomerBot" target="_blank" rel="noopener">@JolyBellCustomerBot</a></p>
+          <p><span class="spin3d">📷</span> <b>INSTAGRAM:</b><br><a href="https://www.instagram.com/joly.official/" target="_blank" rel="noopener">@joly.official</a></p>
+        </div>
+      </div>
+
+      <div class="box green">
+        <h3>💰 We Accept</h3>
+        <div class="in pay">
+          <span class="p1">WAYFORPAY</span>
+          <span class="p2">₿ CRYPTO</span>
+          <span class="p3">PRIVAT24</span>
+          <a class="p4" href="https://t.me/tribute/app?startapp=dwCx" target="_blank" rel="noopener">TELEGRAM</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>⏰ Server Time (IST)</h3>
+        <div class="in"><div class="clock" id="clock">--:--:--</div></div>
+      </div>
+
+      <div class="box pinkbg">
+        <h3>📊 Opinion Poll</h3>
+        <div class="in poll">
+          <b>How you like our NEW website?</b>
+          <label><input type="radio" name="poll" checked> Awesome!!!</label>
+          <label><input type="radio" name="poll"> Superb!!!</label>
+          <label><input type="radio" name="poll"> Mind-blowing!!!</label>
+          <button class="w98" type="button" data-msg="poll">Vote!!!</button>
+        </div>
+      </div>
+
+      <div class="box lime">
+        <h3>♫ Background Music</h3>
+        <div class="in center-txt">
+          <button class="w98" type="button" id="music">▶ PLAY jolybell_theme.mid</button>
+          <div class="tiny">Kindly increase your speaker volume</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <hr class="hr" style="margin-top:0">
+    <div>
+      <a href="https://jolybell.com/en" target="_blank" rel="noopener">Home</a> |
+      <a href="https://jolybell.com/en/faq" target="_blank" rel="noopener">FAQ</a> |
+      <a href="https://jolybell.com/public_offer_2.pdf" target="_blank" rel="noopener">Public offering</a> |
+      <a href="mailto:support@jolybell.com">Contact Us</a> |
+      <a href="#" data-msg="sitemap">Sitemap</a>
+    </div>
+    <div class="badges" aria-hidden="true">
+      <div class="b88">Made with<br>Notepad</div>
+      <div class="b88">Best viewed in<br>IE 6.0</div>
+      <div class="b88">Y2K<br>Compliant ✓</div>
+      <div class="b88">Proudly<br>Desi Design</div>
+      <div class="b88">Valid HTML<br>0.9 (beta)</div>
+      <div class="b88">Powered by<br>Telegram</div>
+    </div>
+    <div>© 2026, JolyBell.com &nbsp;•&nbsp; All Rights Reserved &nbsp;•&nbsp; Page last updated: <span id="updated"></span></div>
+    <div class="disclaimer">Unofficial parody redesign concept made for fun. Not affiliated with JolyBell. Prices and links taken from the real <a href="https://jolybell.com/en" target="_blank" rel="noopener">jolybell.com</a>; this page sends nothing anywhere.</div>
+  </footer>
+</div>
+
+<div class="status" role="status">
+  <span class="cell">✔ Done</span>
+  <span class="cell grow"><marquee scrollamount="3" id="statusMq">Welcome to JolyBell.com!!! ★ Kindly bookmark this page ★ Diwali Dhamaka Sale is LIVE ★ T-shirts starting $25.94/- only ★</marquee></span>
+  <button type="button" id="calm" aria-pressed="false">⏸ Stop blinking</button>
+  <span class="cell hide-sm">🌐 Internet</span>
+</div>
+
+<div class="dlg-back" id="dlgBack">
+  <div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="dlgTitle" aria-describedby="dlgText">
+    <div class="tb"><span id="dlgTitle">Message from webpage</span><button type="button" data-close aria-label="Close">×</button></div>
+    <div class="body"><div class="warn" aria-hidden="true">!</div><div id="dlgText"></div></div>
+    <div class="btns"><button type="button" data-close id="dlgOk">OK</button><button type="button" data-close>Cancel</button></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  const SITE = "https://jolybell.com/en/category/";
+
+  // Real menu of jolybell.com/en; `icon` is either a clip-art symbol id or a big glyph.
+  const CATS = [
+    { name: "No Name", slug: "No%20Name", glyph: "?", isNew: true },
+    { name: "T-shirts", slug: "t-shirts", icon: "i-tee", isNew: true },
+    { name: "Sweatshirts", slug: "sweatshirts", icon: "i-sweat", isNew: true },
+    { name: "Hoodies", slug: "hoodies", icon: "i-hood" },
+    { name: "Pants/shorts", slug: "pants-shorts", icon: "i-pants" },
+    { name: "Bags", slug: "bags", icon: "i-bag" },
+    { name: "Polo", slug: "polo", icon: "i-polo" },
+    { name: "Shirts", slug: "shirts", icon: "i-shirt" },
+    { name: "Pajamas", slug: "pajamas", icon: "i-pj" },
+    { name: "Caps", slug: "caps", icon: "i-cap" },
+    { name: "Underpants", slug: "underpants", icon: "i-under" },
+    { name: "Souvenirs", slug: "souvenirs", icon: "i-mug" },
+    { name: "Hats", slug: "hats", icon: "i-beanie" },
+    { name: "Memes", slug: "memes", glyph: "XD", isNew: true },
+  ];
+
+  // Names and prices from jolybell.com/en/category/t-shirts; `print` is just our clip-art.
+  const PRODUCTS = [
+    { name: "Cross Back", price: 30.5, shirt: "#111", ink: "#fff", print: "✚", isNew: true },
+    { name: "Black Mirror 2.0", price: 26, shirt: "#111", ink: "#fff", print: "MIRROR", mirror: true },
+    { name: "White Mirror 2.0", price: 26, shirt: "#fff", ink: "#000", print: "MIRROR", mirror: true },
+    { name: "Ultra Black T-shirt", price: 26, shirt: "#000", ink: "#000", print: "" },
+    { name: "B.O.M.J Black", price: 26, shirt: "#111", ink: "#fff", print: "B.O.M.J" },
+    { name: "Marginal Black", price: 25.94, shirt: "#111", ink: "#fff", print: "MARGINAL" },
+    { name: "Tryapka White", price: 26, shirt: "#fff", ink: "#000", print: "TRYAPKA" },
+    { name: "Rabotiaga Black", price: 26, shirt: "#111", ink: "#fff", print: "RABOTIAGA" },
+    { name: "Provolka White", price: 26, shirt: "#fff", ink: "#000", print: "PROVOLKA" },
+  ];
+
+  const NAV_COLORS = [
+    ["#ff0000", "#ffff00"], ["#ff9933", "#000080"], ["#ffff00", "#ff0000"], ["#39ff14", "#000"],
+    ["#00ffff", "#9900ff"], ["#0055ff", "#fff"], ["#9900ff", "#ffff00"], ["#ff00cc", "#fff"],
+  ];
+  const TILE_COLORS = ["#ff99ff", "#99ff99", "#99ffff", "#ffff66", "#ffbb66", "#ccccff"];
+
+  const $ = (sel) => document.querySelector(sel);
+  const fmt = (n) => String(+n.toFixed(2));
+  const catUrl = (c) => SITE + c.slug;
+  const newBadge = '<span class="new" aria-hidden="true">NEW!</span>';
+  const ext = 'target="_blank" rel="noopener"';
+
+  function teeSvg(p, size) {
+    const print = p.mirror
+      ? `<text x="50" y="56" transform="translate(100 0) scale(-1 1)">${p.print}</text>`
+      : `<text x="50" y="${p.print.length < 3 ? 60 : 56}">${p.print}</text>`;
+    return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" aria-hidden="true">
+      <use href="#i-tee" style="color:${p.shirt}"/>
+      <g font-family="Impact,Anton,sans-serif" font-size="${p.print.length < 3 ? 22 : p.print.length > 6 ? 8 : 11}" text-anchor="middle" fill="${p.ink}">${print}</g>
+    </svg>`;
+  }
+
+  // ---------- render ----------
+  $("#nav").innerHTML =
+    CATS.map((c, i) => {
+      const [bg, fg] = NAV_COLORS[i % NAV_COLORS.length];
+      return `<a href="${catUrl(c)}" ${ext}${c.isNew ? ' class="has-new"' : ""} style="background:${bg};color:${fg}">${c.name}${c.isNew ? newBadge : ""}</a>`;
+    }).join("") +
+    `<a href="https://jolybell.com/en/faq" ${ext} style="background:#fff;color:#000">FAQ</a>` +
+    `<a href="#" data-msg="order" style="background:#000;color:#39ff14;border-color:#39ff14">Your Order</a>`;
+
+  $("#cats").innerHTML = CATS.map((c) =>
+    `<li><a href="${catUrl(c)}" ${ext}><span class="star" aria-hidden="true">★</span>${c.name}${c.isNew ? '<span class="nw blink">NEW</span>' : ""}</a></li>`
+  ).join("");
+
+  $("#tiles").innerHTML = CATS.map((c, i) => {
+    const pic = c.icon
+      ? `<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#${c.icon}" style="color:${NAV_COLORS[(i + 3) % NAV_COLORS.length][0]}"/></svg>`
+      : `<span class="emo rainbow" aria-hidden="true">${c.glyph}</span>`;
+    return `<a class="tile" href="${catUrl(c)}" ${ext} style="background:${TILE_COLORS[i % TILE_COLORS.length]}">${pic}${c.name}${c.isNew ? newBadge : ""}</a>`;
+  }).join("");
+
+  $("#prods").innerHTML = PRODUCTS.map((p, i) => `
+    <div class="prod">
+      <span class="hot fire" aria-hidden="true">HOT!</span>
+      ${p.isNew ? newBadge : ""}
+      ${teeSvg(p, 120)}
+      <a class="nm" href="${SITE}t-shirts" ${ext}>${p.name}</a>
+      <div class="pr">$ ${fmt(p.price)}/- <small>ONLY</small></div>
+      <div class="acts">
+        <button class="btn sm" type="button" data-add="${i}">🛒 Add to Cart</button>
+        <a class="more" href="${SITE}t-shirts" ${ext}>READ MORE &gt;&gt;</a>
+      </div>
+    </div>`).join("");
+
+  const special = PRODUCTS[0];
+  $("#special").innerHTML = `
+    ${teeSvg(special, 110)}
+    <div><b class="blink" style="color:var(--red)">★ NEW!!! ★</b></div>
+    <div style="font:bold 16px var(--times)">${special.name}</div>
+    <div class="fire" style="font:400 24px var(--impact);-webkit-text-stroke:1px #900">$ ${fmt(special.price)}/-</div>
+    <button class="btn sm" type="button" data-add="0">Buy Now!!!</button>`;
+
+  // ---------- dialog (the 2000s alert(), but non-blocking) ----------
+  const back = $("#dlgBack");
+  let lastFocus = null;
+  function showMsg(title, html) {
+    lastFocus = document.activeElement;
+    $("#dlgTitle").textContent = title;
+    $("#dlgText").innerHTML = html;
+    back.classList.add("open");
+    $("#dlgOk").focus();
+  }
+  function closeMsg() {
+    back.classList.remove("open");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  back.addEventListener("click", (e) => {
+    if (e.target === back || e.target.hasAttribute("data-close")) closeMsg();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && back.classList.contains("open")) closeMsg();
+  });
+
+  const MSGS = {
+    fav: ["Add to Favourites", "Kindly press <b>CTRL + D</b> to bookmark this page!!!"],
+    home: ["Error", "Sorry!!! Your browser does not support this feature.<br>Kindly use <b>Internet Explorer 6.0</b>."],
+    ring: ["Fashion WebRing", "WebRing is under maintenance. Kindly try after some time."],
+    poll: ["Thank You!!!", "Thank you for your valuable feedback!!!<br><br>Results:<br>Awesome — 33%<br>Superb — 33%<br>Mind-blowing — 34%"],
+    sitemap: ["Sitemap", "Sitemap is under construction 🚧"],
+    soon: ["Coming Soon!!!", "This option is coming soon. Kindly stay tuned!!!"],
+  };
+
+  // ---------- cart ----------
+  let cartTotal = 0;
+  let cartCount = 0;
+  function showCart() {
+    showMsg("Your Order", cartCount
+      ? `You have <b>${cartCount}</b> item(s) in cart.<br>Total: <b>${fmt(cartTotal)} USD</b><br><br>Kindly complete your order on <a href="${SITE}t-shirts" ${ext}>jolybell.com</a>.`
+      : "Your cart is empty!!!<br>Kindly add some items.");
+  }
+
+  document.addEventListener("click", (e) => {
+    const add = e.target.closest("[data-add]");
+    if (add) {
+      const p = PRODUCTS[+add.dataset.add];
+      cartTotal += p.price;
+      cartCount += 1;
+      $("#cartTotal").textContent = fmt(cartTotal) + " USD";
+      showMsg("Item Added!!!", `<b>${p.name}</b> is added to your cart.<br>Cart total: <b>${fmt(cartTotal)} USD</b><br><br>Kindly do the needful and checkout!!!`);
+      return;
+    }
+    const m = e.target.closest("[data-msg]");
+    if (m) {
+      e.preventDefault();
+      if (m.dataset.msg === "order") showCart();
+      else showMsg(...MSGS[m.dataset.msg]);
+    }
+  });
+  $("#cartBtn").addEventListener("click", showCart);
+  document.querySelectorAll("select[data-soon]").forEach((s) =>
+    s.addEventListener("change", () => { s.selectedIndex = 0; showMsg(...MSGS.soon); })
+  );
+
+  $("#gb").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = String(new FormData(e.target).get("name")).trim();
+    const safe = name.replace(/[&<>"']/g, (ch) => "&#" + ch.charCodeAt(0) + ";");
+    showMsg("Guestbook", `Thank you <b>${safe}</b> ji!!!<br>Your entry will be added after webmaster approval.<br><br><span class="tiny">(Demo only: nothing is saved or sent.)</span>`);
+    e.target.reset();
+  });
+
+  // ---------- visitor counter ----------
+  let visits = 1;
+  try {
+    visits = (parseInt(localStorage.getItem("jb_visits"), 10) || 0) + 1;
+    localStorage.setItem("jb_visits", String(visits));
+  } catch (err) { /* storage blocked: stay at 1 */ }
+  const digits = String(999999 + visits).padStart(8, "0").split("").map((d) => `<span>${d}</span>`).join("");
+  $("#counter").innerHTML = digits;
+  $("#counter2").innerHTML = digits;
+
+  // ---------- clock + last updated ----------
+  function tick() {
+    $("#clock").textContent = new Date().toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour12: true });
+  }
+  tick();
+  setInterval(tick, 1000);
+  $("#updated").textContent = document.lastModified;
+
+  // ---------- stop blinking ----------
+  const root = document.documentElement;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isCalm = () => reduced || root.classList.contains("calm");
+  function applyCalm() {
+    const calm = isCalm();
+    document.querySelectorAll("marquee").forEach((mq) => (calm ? mq.stop() : mq.start()));
+    $("#calm").textContent = calm ? "▶ Start blinking" : "⏸ Stop blinking";
+    $("#calm").setAttribute("aria-pressed", String(calm));
+  }
+  $("#calm").addEventListener("click", () => {
+    root.classList.toggle("calm");
+    applyCalm();
+  });
+  if (reduced) root.classList.add("calm");
+  applyCalm();
+
+  // ---------- scrolling title bar ----------
+  const TITLE = " *** JolyBell.com *** DIWALI DHAMAKA SALE *** T-shirts from $25.94/- *** ";
+  let ti = 0;
+  setInterval(() => {
+    if (isCalm()) return;
+    ti = (ti + 1) % TITLE.length;
+    document.title = TITLE.slice(ti) + TITLE.slice(0, ti);
+  }, 200);
+
+  // ---------- sparkle cursor trail ----------
+  const SPARKS = ["★", "✦", "✧", "✶", "*"];
+  const SPARK_COLORS = ["#ff0", "#f0c", "#0ff", "#3f3", "#f90", "#f00"];
+  let lastSpark = 0;
+  document.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse" || isCalm()) return;
+    const now = performance.now();
+    if (now - lastSpark < 40) return;
+    lastSpark = now;
+    const s = document.createElement("span");
+    s.className = "sparkle";
+    s.textContent = SPARKS[Math.floor(Math.random() * SPARKS.length)];
+    s.style.color = SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)];
+    s.style.left = e.pageX + 6 + "px";
+    s.style.top = e.pageY + 6 + "px";
+    document.body.appendChild(s);
+    s.addEventListener("animationend", () => s.remove());
+  });
+
+  // ---------- background music (original chiptune, double-harmonic scale) ----------
+  const SCALE = [261.63, 277.18, 329.63, 349.23, 392.0, 415.3, 493.88, 523.25];
+  const TUNE = [0, 2, 3, 4, 5, 4, 3, 2, 0, 1, 2, 1, 0, -1, 0, -1, 4, 5, 7, 5, 4, 3, 2, 3, 4, 3, 2, 1, 2, 0, 0, -1];
+  let ctx = null, timer = null, drone = null;
+  function beep(freq, at, len, type, vol) {
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = type;
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(vol, at);
+    g.gain.exponentialRampToValueAtTime(0.001, at + len);
+    o.connect(g).connect(ctx.destination);
+    o.start(at);
+    o.stop(at + len + 0.02);
+  }
+  function startMusic() {
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    ctx.resume();
+    drone = ctx.createOscillator();
+    const dg = ctx.createGain();
+    drone.type = "sawtooth";
+    drone.frequency.value = 130.81;
+    dg.gain.value = 0.015;
+    drone.connect(dg).connect(ctx.destination);
+    drone.start();
+    let n = 0;
+    timer = setInterval(() => {
+      const k = TUNE[n % TUNE.length];
+      if (n % 2 === 0) beep(80, ctx.currentTime, 0.12, "sine", 0.12);
+      if (k >= 0) beep(SCALE[k], ctx.currentTime, 0.22, "square", 0.05);
+      n += 1;
+    }, 230);
+  }
+  function stopMusic() {
+    clearInterval(timer);
+    timer = null;
+    if (drone) { drone.stop(); drone = null; }
+  }
+  $("#music").addEventListener("click", () => {
+    if (timer) { stopMusic(); $("#music").textContent = "▶ PLAY jolybell_theme.mid"; }
+    else { startMusic(); $("#music").textContent = "■ STOP jolybell_theme.mid"; }
+  });
+
+  // ---------- the famous welcome popup ----------
+  setTimeout(() => {
+    showMsg("Message from webpage",
+      "<b>CONGRATULATIONS!!! 🎉</b><br>You are our <b>1,000,000th</b> visitor!!!<br><br>Kindly click OK to continue the shopping.");
+  }, 700);
+})();
+</script>
+</body>
+</html>
