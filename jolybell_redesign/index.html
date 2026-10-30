@@ -164,7 +164,8 @@ h1.wordart{
   font:400 16px/1 var(--impact);clip-path:var(--burst);
   background:var(--red);color:var(--yel);animation:throb .5s ease-in-out infinite alternate;
 }
-.b1{top:6px;right:6px}
+.b1{top:6px;left:6px;width:88px;height:88px;font-size:13px}
+.hero-copy{padding-top:70px}
 .b2{bottom:6px;right:6px;background:var(--lime);color:var(--red);font-size:15px}
 .wordart2{
   margin:0;text-align:center;
@@ -177,6 +178,9 @@ h1.wordart{
 .hero-txt i{color:var(--grn)}
 .hero-pic{text-align:center}
 .hero-pic svg{width:min(250px,100%);height:auto;filter:drop-shadow(6px 6px 0 rgba(0,0,0,.45));animation:throb 1.2s ease-in-out infinite alternate}
+.photo{position:relative;display:inline-block;margin:0;padding:8px 8px 32px;background:#fff;border:5px solid;border-image:linear-gradient(45deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f) 1;transform:rotate(3deg);box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+.photo img{display:block;width:240px;max-width:100%;aspect-ratio:4/5;object-fit:cover;object-position:51% 40%}
+.photo figcaption{position:absolute;left:0;right:0;bottom:7px;text-align:center;font:bold 14px var(--comic);color:var(--red)}
 
 .btn{
   display:inline-block;font:900 16px var(--tahoma);text-transform:uppercase;text-decoration:none;
@@ -226,13 +230,15 @@ a.ad:visited{color:#fff}
 .prod:nth-child(5n+3){background:#99ffff}
 .prod:nth-child(5n+4){background:#ffff66}
 .prod:nth-child(5n+5){background:#ffbb66}
-.prod svg{width:120px;height:120px;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.45))}
-.prod:hover svg{animation:spin3d 1s linear infinite}
+.prod .pic{position:relative;display:grid;place-items:center;height:170px}
+.prod .pic::before{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:repeating-conic-gradient(rgba(255,255,255,.75) 0 10deg,transparent 10deg 20deg);animation:spin 8s linear infinite}
+.pic img,.pic svg{position:relative;width:146px;height:160px;object-fit:contain;filter:drop-shadow(4px 4px 0 rgba(0,0,0,.45))}
+.prod:hover .pic img,.prod:hover .pic svg{animation:spin3d 1s linear infinite}
 .prod .nm{display:block;font:bold 17px var(--times);margin:4px 0}
 .prod .pr{display:inline-block;font:400 22px var(--impact);color:var(--red);background:var(--yel);padding:0 6px;transform:rotate(-3deg);border:2px dashed var(--red);margin:4px 0 8px}
 .prod .pr small{font:bold 11px var(--tahoma);color:#000}
-.prod .hot{position:absolute;top:6px;left:8px;font:400 18px var(--impact)}
-.prod .new{top:-10px;right:-8px}
+.prod .hot{position:absolute;z-index:2;top:6px;left:8px;font:400 18px var(--impact)}
+.prod .new{z-index:2;top:-10px;right:-8px}
 .prod .acts{display:flex;flex-direction:column;gap:6px;align-items:center}
 .prod .more{font:bold 13px var(--times)}
 
@@ -326,7 +332,8 @@ a.ad:visited{color:#fff}
   .main{grid-template-columns:1fr}
   .center{order:-1}
   .hero{grid-template-columns:1fr}
-  .b1{width:96px;height:96px;font-size:14px;top:auto;right:auto;bottom:6px;left:6px}
+  .b1{width:96px;height:96px;font-size:14px;top:auto;bottom:6px}
+  .hero-copy{padding-top:0}
   .b2{width:96px;height:96px;font-size:13px}
 }
 @media (max-width:480px){
@@ -440,7 +447,7 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
         <div class="rays" aria-hidden="true"></div>
         <div class="burst b1">NEW<br>ARRIVAL<br>!!!</div>
         <div class="burst b2">T-SHIRTS<br>FROM<br>$25.94/-</div>
-        <div>
+        <div class="hero-copy">
           <h2 class="wordart2">MEGA DIWALI<br>DHAMAKA<br>SALE!!!</h2>
           <div class="hero-txt">
             Hoodies • Sweatshirts • T-shirts • Caps<br>
@@ -449,6 +456,11 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
           <div class="center-txt"><a class="btn" href="https://jolybell.com/en/category/hoodies" target="_blank" rel="noopener">☞ Shop Now!!! &gt;&gt;</a></div>
         </div>
         <div class="hero-pic">
+          <figure class="photo" id="heroPhoto">
+            <img src="https://cdn.jolybell.com/banners/zQmhckrQKwcp3LD.webp" alt="Models in JolyBell hoodies printed with crossed-out words: hoodie, sweatshot, poolover, paita, jemper, sweater" data-fallback="hoodie">
+            <figcaption><span class="blink">☆</span> 100% REAL PHOTO!!! <span class="blink">☆</span></figcaption>
+          </figure>
+          <template id="hoodieArt">
           <svg viewBox="0 0 100 100" role="img" aria-label="White hoodie with the words paita, jemper, sweater crossed out">
             <use href="#i-hood" style="color:#fff"/>
             <g font-family="Impact,Anton,sans-serif" font-size="8" text-anchor="middle" fill="#000">
@@ -462,6 +474,7 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
               <line x1="34" y1="55" x2="66" y2="55"/>
             </g>
           </svg>
+          </template>
         </div>
       </section>
 
@@ -602,7 +615,7 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
       <div class="b88">Powered by<br>Telegram</div>
     </div>
     <div>© 2026, JolyBell.com &nbsp;•&nbsp; All Rights Reserved &nbsp;•&nbsp; Page last updated: <span id="updated"></span></div>
-    <div class="disclaimer">Unofficial parody redesign concept made for fun. Not affiliated with JolyBell. Prices and links taken from the real <a href="https://jolybell.com/en" target="_blank" rel="noopener">jolybell.com</a>; this page sends nothing anywhere.</div>
+    <div class="disclaimer">Unofficial parody redesign concept made for fun. Not affiliated with JolyBell. Product photos, prices and links come from the real <a href="https://jolybell.com/en" target="_blank" rel="noopener">jolybell.com</a> (photos load from its CDN); this page sends nothing anywhere.</div>
   </footer>
 </div>
 
@@ -626,6 +639,8 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
   "use strict";
 
   const SITE = "https://jolybell.com/en/category/";
+  const PRODUCT_PAGE = "https://jolybell.com/en/product/";
+  const PHOTO_CDN = "https://cdn.jolybell.com/images/s/";
 
   // Real menu of jolybell.com/en; `icon` is either a clip-art symbol id or a big glyph.
   const CATS = [
@@ -645,17 +660,25 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
     { name: "Memes", slug: "memes", glyph: "XD", isNew: true },
   ];
 
-  // Names and prices from jolybell.com/en/category/t-shirts; `print` is just our clip-art.
+  // The real t-shirt catalogue of jolybell.com/en/category/t-shirts: product page id,
+  // photo id on cdn.jolybell.com and price. `print` only feeds the SVG fallback.
   const PRODUCTS = [
-    { name: "Cross Back", price: 30.5, shirt: "#111", ink: "#fff", print: "✚", isNew: true },
-    { name: "Black Mirror 2.0", price: 26, shirt: "#111", ink: "#fff", print: "MIRROR", mirror: true },
-    { name: "White Mirror 2.0", price: 26, shirt: "#fff", ink: "#000", print: "MIRROR", mirror: true },
-    { name: "Ultra Black T-shirt", price: 26, shirt: "#000", ink: "#000", print: "" },
-    { name: "B.O.M.J Black", price: 26, shirt: "#111", ink: "#fff", print: "B.O.M.J" },
-    { name: "Marginal Black", price: 25.94, shirt: "#111", ink: "#fff", print: "MARGINAL" },
-    { name: "Tryapka White", price: 26, shirt: "#fff", ink: "#000", print: "TRYAPKA" },
-    { name: "Rabotiaga Black", price: 26, shirt: "#111", ink: "#fff", print: "RABOTIAGA" },
-    { name: "Provolka White", price: 26, shirt: "#fff", ink: "#000", print: "PROVOLKA" },
+    { name: "Cross Back", id: 176, img: "tZqGkyEgWObks8e", price: 30.5, print: "✚", isNew: true },
+    { name: "Black Mirror 2.0", id: 146, img: "wT0oprlxMhqcGbq", price: 26, print: "MIRROR" },
+    { name: "White Mirror 2.0", id: 147, img: "8Af2LZYVBMv3yMf", price: 26, print: "MIRROR" },
+    { name: "Ultra Black T-shirt", id: 114, img: "cGNahzAeoJFmDUy", price: 26, print: "" },
+    { name: "B.O.M.J Black", id: 1, img: "ucPsORdrx3gjKUU", price: 26, print: "B.O.M.J" },
+    { name: "B.O.M.J White", id: 2, img: "23krhtEjb4SgZcQ", price: 26, print: "B.O.M.J" },
+    { name: "Marginal Black", id: 3, img: "9THrvo8ZaDcllU2", price: 25.94, print: "MARGINAL" },
+    { name: "Marginal White", id: 4, img: "xCgnDk8rfBxNlre", price: 26, print: "MARGINAL" },
+    { name: "Tryapka Black", id: 5, img: "oFx2NyWY1bTjEq7", price: 26, print: "TRYAPKA" },
+    { name: "Tryapka White", id: 145, img: "PY7hHZEuoRFm6vM", price: 26, print: "TRYAPKA" },
+    { name: "Black Mirror", id: 6, img: "DZRVnU3g5RWEgOu", price: 26, print: "MIRROR" },
+    { name: "White Mirror", id: 7, img: "7Q5qXQH5C741iri", price: 26, print: "MIRROR" },
+    { name: "Rabotiaga Black", id: 8, img: "cog9X298tSXwlWm", price: 26, print: "RABOTIAGA" },
+    { name: "Rabotiaga White", id: 9, img: "ICBQWQ7B7ZKVEzS", price: 26, print: "RABOTIAGA" },
+    { name: "Provolka Black", id: 10, img: "w48AXGb9ovFW6sE", price: 26, print: "PROVOLKA" },
+    { name: "Provolka White", id: 11, img: "2EB4fzXEClMyCrl", price: 26, print: "PROVOLKA" },
   ];
 
   const NAV_COLORS = [
@@ -670,15 +693,35 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
   const newBadge = '<span class="new" aria-hidden="true">NEW!</span>';
   const ext = 'target="_blank" rel="noopener"';
 
+  // Clip-art t-shirt, shown only when the real photo fails to load.
   function teeSvg(p, size) {
-    const print = p.mirror
+    const white = /White/.test(p.name);
+    const shirt = white ? "#fff" : "#111";
+    const ink = white ? "#000" : "#fff";
+    const print = /Mirror/.test(p.name)
       ? `<text x="50" y="56" transform="translate(100 0) scale(-1 1)">${p.print}</text>`
       : `<text x="50" y="${p.print.length < 3 ? 60 : 56}">${p.print}</text>`;
     return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" aria-hidden="true">
-      <use href="#i-tee" style="color:${p.shirt}"/>
-      <g font-family="Impact,Anton,sans-serif" font-size="${p.print.length < 3 ? 22 : p.print.length > 6 ? 8 : 11}" text-anchor="middle" fill="${p.ink}">${print}</g>
+      <use href="#i-tee" style="color:${shirt}"/>
+      <g font-family="Impact,Anton,sans-serif" font-size="${p.print.length < 3 ? 22 : p.print.length > 6 ? 8 : 11}" text-anchor="middle" fill="${ink}">${print}</g>
     </svg>`;
   }
+
+  const photo = (p, i) =>
+    `<img src="${PHOTO_CDN}${p.img}.avif" alt="${p.name} t-shirt" width="146" height="160" loading="lazy" data-fallback="${i}">`;
+
+  // Real photos live on jolybell's CDN; if it refuses us, fall back to clip-art.
+  function useHoodieArt() {
+    $("#heroPhoto").replaceWith($("#hoodieArt").content.cloneNode(true));
+  }
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || !img.dataset.fallback) return;
+    if (img.dataset.fallback === "hoodie") useHoodieArt();
+    else img.outerHTML = teeSvg(PRODUCTS[+img.dataset.fallback], 146);
+  }, true);
+  const heroImg = $("#heroPhoto img");
+  if (heroImg.complete && !heroImg.naturalWidth) useHoodieArt();
 
   // ---------- render ----------
   $("#nav").innerHTML =
@@ -704,20 +747,20 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important}
     <div class="prod">
       <span class="hot fire" aria-hidden="true">HOT!</span>
       ${p.isNew ? newBadge : ""}
-      ${teeSvg(p, 120)}
-      <a class="nm" href="${SITE}t-shirts" ${ext}>${p.name}</a>
+      <div class="pic">${photo(p, i)}</div>
+      <a class="nm" href="${PRODUCT_PAGE}${p.id}" ${ext}>${p.name}</a>
       <div class="pr">$ ${fmt(p.price)}/- <small>ONLY</small></div>
       <div class="acts">
         <button class="btn sm" type="button" data-add="${i}">🛒 Add to Cart</button>
-        <a class="more" href="${SITE}t-shirts" ${ext}>READ MORE &gt;&gt;</a>
+        <a class="more" href="${PRODUCT_PAGE}${p.id}" ${ext}>READ MORE &gt;&gt;</a>
       </div>
     </div>`).join("");
 
   const special = PRODUCTS[0];
   $("#special").innerHTML = `
-    ${teeSvg(special, 110)}
+    <div class="pic">${photo(special, 0)}</div>
     <div><b class="blink" style="color:var(--red)">★ NEW!!! ★</b></div>
-    <div style="font:bold 16px var(--times)">${special.name}</div>
+    <a href="${PRODUCT_PAGE}${special.id}" ${ext} style="font:bold 16px var(--times)">${special.name}</a>
     <div class="fire" style="font:400 24px var(--impact);-webkit-text-stroke:1px #900">$ ${fmt(special.price)}/-</div>
     <button class="btn sm" type="button" data-add="0">Buy Now!!!</button>`;
 
